@@ -3,7 +3,7 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/providers/theme.provider";
-import { cn } from "@/lib/utils";
+import { cn } from "/lib/utils";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -24,7 +24,7 @@ export default function RootLayout({
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
-            enableSystem={false} //If issue with system mode staying dark or light, then reset to "enableSystem={false}"
+            enableSystem //If issue with system mode staying dark or light, then reset to "enableSystem={false}"
             storageKey="discord-theme">
             {children}
           </ThemeProvider>
