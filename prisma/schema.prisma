@@ -37,7 +37,7 @@ model Profile {
 model Server {
   id String @id @default(uuid())
   name String
-  imageRul String @db.Text
+  imageUrl String @db.Text
   inviteCode String @db.Text
 
   profileId String
