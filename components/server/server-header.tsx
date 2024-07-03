@@ -2,12 +2,21 @@
 
 import { ServerWithMembersWithProfiles } from "@/types";
 import { MemberRole } from "@prisma/client";
-import { ChevronDown, UserPlus } from "lucide-react";
+import {
+  ChevronDown,
+  LogOut,
+  PlusSquare,
+  Settings,
+  Trash2,
+  UserPlus,
+  Users,
+} from "lucide-react";
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -30,9 +39,40 @@ export const ServerHeader = ({ server, role }: ServerHeaderProps) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 text-xs font-medium text-black dark:text-neutral-400 space-y-[2px]">
         {isModerator && (
-          <DropdownMenuItem className="text-indigo-600 dark:text-indigo-400 px-3 py-2 text-sm cursor-pointer">
-            Invite People!
+          <DropdownMenuItem className="text-[#45A29E] dark:text-[#66FCF1] px-3 py-2 text-sm cursor-pointer">
+            Invites!
             <UserPlus className="h-4 w-4 ml-auto" />
+          </DropdownMenuItem>
+        )}
+        {isAdmin && (
+          <DropdownMenuItem className=" px-3 py-2 text-sm cursor-pointer">
+            Sever Settings
+            <Settings className="h-4 w-4 ml-auto" />
+          </DropdownMenuItem>
+        )}
+        {isAdmin && (
+          <DropdownMenuItem className=" px-3 py-2 text-sm cursor-pointer">
+            Manage Members
+            <Users className="h-4 w-4 ml-auto" />
+          </DropdownMenuItem>
+        )}
+        {isModerator && (
+          <DropdownMenuItem className=" px-3 py-2 text-sm cursor-pointer">
+            Create Channel
+            <PlusSquare className="h-4 w-4 ml-auto" />
+          </DropdownMenuItem>
+        )}
+        {isModerator && <DropdownMenuSeparator />}
+        {isAdmin && (
+          <DropdownMenuItem className=" text-rose-900 px-3 py-2 text-sm cursor-pointer">
+            Delete Server
+            <Trash2 className="h-4 w-4 ml-auto" />
+          </DropdownMenuItem>
+        )}
+        {!isAdmin && (
+          <DropdownMenuItem className=" text-rose-900 px-3 py-2 text-sm cursor-pointer">
+            Leave Server
+            <LogOut className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>
