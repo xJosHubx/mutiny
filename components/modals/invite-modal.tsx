@@ -36,7 +36,7 @@ export const InviteModal = () => {
         {/*getting rid of "aria-desccribedby" line 35 causes a lot of errors???*/}
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
-            Invite Friends!
+            Invites!
           </DialogTitle>
         </DialogHeader>
         <div className="p-6">
