@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useOrigin = () => {
+export const UseOrigin = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -15,6 +15,4 @@ export const useOrigin = () => {
   if (!mounted) {
     return "";
   }
-
-  return origin;
 };

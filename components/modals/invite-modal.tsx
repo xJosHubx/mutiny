@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Copy, RefreshCw } from "lucide-react";
 
 import {
@@ -17,15 +16,9 @@ import { useModal } from "@/hooks/use-modal-store";
 import { useOrigin } from "@/hooks/use-origin";
 
 export const InviteModal = () => {
-  const { isOpen, onClose, type, data } = useModal();
-  const origin = useOrigin();
+  const { isOpen, onClose, type } = useModal();
 
   const isModalOpen = isOpen && type === "invite";
-  const { server } = data;
-
-  const [copied, setCopied] = useState(false);
-
-  const inviteUrl = `${origin}/invite/${server?.inviteCode}`;
 
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
@@ -41,7 +34,7 @@ export const InviteModal = () => {
           <Label className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70 ">
             Invite Modal!
           </Label>
-          <div className="flex items-center mt-2 gap-x-2">
+          <div className="flex items-ceinter mt-2 gap-x-2">
             <Input
               className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
               defaultValue={inviteUrl} //set this to defaultValue. To revert just remove the default.
