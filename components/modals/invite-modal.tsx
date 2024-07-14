@@ -18,6 +18,7 @@ import { useOrigin } from "@/hooks/use-origin";
 
 export const InviteModal = () => {
   const { isOpen, onClose, type } = useModal();
+  const origin = useOrigin();
 
   const isModalOpen = isOpen && type === "invite";
 

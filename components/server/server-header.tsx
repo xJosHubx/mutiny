@@ -6,7 +6,6 @@ import {
   ChevronDown,
   LogOut,
   PlusSquare,
-  Server,
   Settings,
   Trash2,
   UserPlus,
