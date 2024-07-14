@@ -10,8 +10,6 @@ import {
 } from "@/components/ui/dialog";
 
 import { useModal } from "@/hooks/use-modal-store";
-import { useOrigin } from "@/hooks/use-origin";
-
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -26,10 +24,7 @@ export const InviteModal = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
-      <DialogContent
-        className="bg-white text-black rounded-xl p-5 overflow-hidden"
-        aria-describedby={undefined}>
-        {/*getting rid of "aria-desccribedby" line 35 causes a lot of errors???*/}
+      <DialogContent className="bg-white text-black rounded-xl p-5 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
             Invite a Friend!
@@ -42,8 +37,7 @@ export const InviteModal = () => {
           <div className="flex items-ceinter mt-2 gap-x-2">
             <Input
               className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
-              value={inviteUrl}
-              readOnly //getting rid of readOnly line causes a lot of erros.//
+              value="invite-link"
             />
             <Button size="icon">
               <Copy className="w-4 h-4" />
