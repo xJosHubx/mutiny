@@ -17,14 +17,19 @@ import { Button } from "@/components/ui/button";
 import { useOrigin } from "@/hooks/use-origin";
 
 export const InviteModal = () => {
-  const { isOpen, onClose, type } = useModal();
+  const { isOpen, onClose, type, data } = useModal();
   const origin = useOrigin();
 
   const isModalOpen = isOpen && type === "invite";
+  const { server } = data;
+
+  const inviteUrl = `${origin}/invite/${server?.inviteCode}`;
 
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-white text-black rounded-xl p-5 overflow-hidden">
+      <DialogContent
+        className="bg-white text-black rounded-xl p-5 overflow-hidden"
+        aria-describedby={undefined}>
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
             Invite a Friend!
@@ -34,10 +39,10 @@ export const InviteModal = () => {
           <Label className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70 ">
             Invite Modal!
           </Label>
-          <div className="flex items-ceinter mt-2 gap-x-2">
+          <div className="flex items-center mt-2 gap-x-2">
             <Input
               className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
-              value="invite-link"
+              defaultValue={inviteUrl}
             />
             <Button size="icon">
               <Copy className="w-4 h-4" />
@@ -48,7 +53,7 @@ export const InviteModal = () => {
             size="sm"
             className="text-xs text-zinc-500 mt-4">
             Generate a new link
-            <RefreshCw className="w-4 h4 ml-2" />
+            <RefreshCw className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </DialogContent>
