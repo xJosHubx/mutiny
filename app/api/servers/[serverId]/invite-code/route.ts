@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
+import { NextResponse } from "next/server";
+
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
-import { NextResponse } from "next/server";
 
 export async function PATCH(
   req: Request,
@@ -30,7 +31,7 @@ export async function PATCH(
 
     return NextResponse.json(server);
   } catch (error) {
-    console.log("[SERVER_ID, error]");
+    console.log("[SERVER_ID]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

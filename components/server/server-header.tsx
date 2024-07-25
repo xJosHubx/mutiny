@@ -28,7 +28,6 @@ interface ServerHeaderProps {
 
 export const ServerHeader = ({ server, role }: ServerHeaderProps) => {
   const { onOpen } = useModal();
-  const { onClose } = useModal();
 
   const isAdmin = role === MemberRole.ADMIN;
   const isModerator = isAdmin || role === MemberRole.MODERATOR;
