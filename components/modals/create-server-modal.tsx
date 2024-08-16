@@ -82,7 +82,7 @@ export const CreateServerModal = () => {
             Customize your server
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Give your server a personality
+            Give your server personality
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -129,7 +129,10 @@ export const CreateServerModal = () => {
               />
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
-              <Button variant={"primary"} disabled={isLoading}>
+              <Button
+                variant={"primary"}
+                disabled={isLoading}
+                className="flex mx-auto w-[150px] text-xl bg-gradient-to-t from-purple-500 to-blue-600 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 Create
               </Button>
             </DialogFooter>

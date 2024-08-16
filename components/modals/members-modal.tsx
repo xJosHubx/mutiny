@@ -65,9 +65,13 @@ export const MembersModal = () => {
       const url = qs.stringifyUrl({
         url: `/api/members/${memberId}`,
         query: {
-          serverIed: server?.id,
+          serverId: server?.id,
         },
       });
+
+      const response = await axios.delete(url);
+      router.refresh();
+      onOpen("members", { server: response.data });
     } catch (error) {
       console.log(error);
     } finally {
@@ -159,7 +163,7 @@ export const MembersModal = () => {
                           </DropdownMenuPortal>
                         </DropdownMenuSub>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => onKick(member.id)}>
                           <Gavel className="w-4 h-4 mr-2" />
                           Kick
                         </DropdownMenuItem>
