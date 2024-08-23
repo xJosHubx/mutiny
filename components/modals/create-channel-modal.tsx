@@ -55,7 +55,7 @@ const formSchema = z.object({
 });
 
 export const CreateChannelModal = () => {
-  const { isOpen, onClose, type, data = {} } = useModal();
+  const { isOpen, onClose, type, data } = useModal();
 
   const router = useRouter();
   const params = useParams();
@@ -111,13 +111,10 @@ export const CreateChannelModal = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
-      <DialogContent
-        className="bg-white text-black p-0 overflow-hidden"
-        aria-describedby="create-channel">
+      <DialogDescription />
+      <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
-          <DialogTitle
-            id="create-channel"
-            className="text-2xl text-center font-bold">
+          <DialogTitle className="text-2xl text-center font-bold">
             Create Channel
           </DialogTitle>
         </DialogHeader>

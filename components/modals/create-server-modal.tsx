@@ -72,13 +72,9 @@ export const CreateServerModal = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
-      <DialogContent
-        aria-describedby="create-channel"
-        className="bg-white text-black rounded-xl p-5 overflow-hidden">
+      <DialogContent className="bg-white text-black rounded-xl p-5 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
-          <DialogTitle
-            id="customize-server"
-            className="text-2xl text-center font-bold">
+          <DialogTitle className="text-2xl text-center font-bold">
             Customize your server
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">

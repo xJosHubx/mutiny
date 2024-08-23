@@ -82,13 +82,9 @@ export const EditServerModal = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
-      <DialogContent
-        className="bg-white text-black rounded-xl p-5 overflow-hidden"
-        aria-describedby="customize-server">
+      <DialogContent className="bg-white text-black rounded-xl p-5 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
-          <DialogTitle
-            className="text-2xl text-center font-bold"
-            id="customize-server">
+          <DialogTitle className="text-2xl text-center font-bold">
             Customize your server
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
