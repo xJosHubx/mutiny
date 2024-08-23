@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/command";
 import { CommandList } from "cmdk";
 import { useParams, useRouter } from "next/navigation";
+import { DialogTitle } from "../ui/dialog";
 
 interface ServerSearchProps {
   data: {
@@ -75,6 +76,7 @@ export const ServerSearch = ({ data }: ServerSearchProps) => {
         </kbd>
       </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
+        <DialogTitle />
         <CommandInput placeholder="Search All" />
         <CommandList>
           <CommandEmpty>No Results Found</CommandEmpty>
