@@ -13,18 +13,19 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 import { useModal } from "@/hooks/use-modal-store";
-import { Button } from "@/components/ui/button";
 
 export const DeleteChannelModal = () => {
   const { isOpen, onClose, type, data = {} } = useModal();
   const router = useRouter();
 
-  const isModalOpen = isOpen && type === "deleteChannel";
-  const { server, channel } = data || {};
-
   const [isLoading, setIsLoading] = useState(false);
+
+  const isModalOpen = isOpen && type === "deleteChannel";
+
+  const { server, channel } = data || {};
 
   const onClick = async () => {
     try {
@@ -39,8 +40,8 @@ export const DeleteChannelModal = () => {
       await axios.delete(url);
 
       onClose();
-      router.refresh();
       router.push(`/servers/${server?.id}`);
+      router.refresh();
     } catch (error) {
       console.log(error);
     } finally {

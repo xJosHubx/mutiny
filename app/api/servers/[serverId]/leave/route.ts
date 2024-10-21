@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function PATCH(
-  req: Request,
+  _req: Request,
   { params }: { params: { serverId: string } }
 ) {
   try {
