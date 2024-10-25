@@ -3,7 +3,7 @@ import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 
 export async function DELETE(
-  _req: Request,
+  req: Request,
   { params }: { params: { serverId: string } }
 ) {
   try {
