@@ -8,7 +8,7 @@ export default async function handler(
   res: NextApiResponseServerIo
 ) {
   if (req.method !== "POST") {
-    return res.status(405).json({ errors: "Method Not Allowed" });
+    return res.status(405).json({ error: "Method Not Allowed" });
   }
 
   try {
@@ -88,7 +88,7 @@ export default async function handler(
 
     return res.status(200).json(message);
   } catch (error) {
-    console.log("[MESSAGES_POST", error);
+    console.log("[MESSAGES_POST]", error);
     return res.status(500).json({ message: "Internal Error" });
   }
 }
