@@ -43,7 +43,7 @@ interface ChatItemProps {
 const roleIconMap = {
   GUEST: null,
   MODERATOR: <ShieldCheck className="h-4 w-4 ml-2 text-emerald-500" />,
-  ADMIN: <ShieldAlert className="h-4 w-4 ml-2 text-rose-800" />,
+  ADMIN: <ShieldAlert className="h-4 w-4 ml-2 text-rose-700" />,
 };
 
 const formSchema = z.object({
@@ -59,14 +59,15 @@ export const ChatItem = ({
   deleted,
   currentMember,
   isUpdated,
-  socketUrl,
   socketQuery,
+  socketUrl,
 }: ChatItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
-  const { onOpen } = useModal();
 
   const params = useParams();
   const router = useRouter();
+
+  const { onOpen } = useModal();
 
   const onMemberClick = () => {
     if (member.id === currentMember.id) {
@@ -74,6 +75,18 @@ export const ChatItem = ({
     }
     router.push(`/servers/${params?.serverId}/conversations/${member.id}`);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event: any) => {
+      if (event.key === "Esc" || event.keyCode === 27) {
+        setIsEditing(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -92,24 +105,13 @@ export const ChatItem = ({
       });
 
       await axios.patch(url, values);
+
       form.reset();
       setIsEditing(false);
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    const handleKeyDown = (event: any) => {
-      if (event.key === "Esc" || event.keyCode === 27) {
-        setIsEditing(false);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
 
   useEffect(() => {
     form.reset({
@@ -121,9 +123,12 @@ export const ChatItem = ({
 
   const isAdmin = currentMember.role === MemberRole.ADMIN;
   const isModerator = currentMember.role === MemberRole.MODERATOR;
+
   const isOwner = currentMember.id === member.id;
+
   const canDeleteMessage = !deleted && (isAdmin || isModerator || isOwner);
-  const canEditMessage = !deleted && isOwner && !fileUrl;
+  const canEditMessage = !deleted && isOwner;
+
   const isPDF = fileType === "pdf" && fileUrl;
   const isImage = !isPDF && fileUrl;
 
