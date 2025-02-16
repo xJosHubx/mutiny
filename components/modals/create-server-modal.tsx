@@ -2,6 +2,9 @@
 import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { useModal } from "@/hooks/use-modal-store";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 import {
@@ -24,8 +27,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
-import { useRouter } from "next/navigation";
-import { useModal } from "@/hooks/use-modal-store";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -77,7 +78,7 @@ export const CreateServerModal = () => {
             Customize your server
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Give your server a personality
+            Give your server personality
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -110,10 +111,12 @@ export const CreateServerModal = () => {
                     </FormLabel>
                     <FormControl>
                       <Input
+                        autoComplete="off"
                         disabled={isLoading}
                         className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                         placeholder="Enter Server Name"
                         {...field}
+                        onChange={field.onChange}
                       />
                     </FormControl>
                     <FormMessage></FormMessage>
@@ -122,7 +125,10 @@ export const CreateServerModal = () => {
               />
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
-              <Button variant="primary" disabled={isLoading}>
+              <Button
+                variant={"primary"}
+                disabled={isLoading}
+                className="flex mx-auto w-[150px] text-xl bg-gradient-to-t from-purple-500 to-blue-600 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 Create
               </Button>
             </DialogFooter>

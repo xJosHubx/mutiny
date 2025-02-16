@@ -15,5 +15,7 @@ export const useOrigin = () => {
   if (!mounted) {
     return "";
   }
-   return origin;
+
+  return origin;
+
 };
