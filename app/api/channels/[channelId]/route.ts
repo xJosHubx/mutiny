@@ -43,7 +43,9 @@ export async function DELETE(
           delete: {
             id: params.channelId,
             name: {
-              not: "general" || "General",
+              not: {
+                in: ["general", "General"],
+              },
             },
           },
         },
